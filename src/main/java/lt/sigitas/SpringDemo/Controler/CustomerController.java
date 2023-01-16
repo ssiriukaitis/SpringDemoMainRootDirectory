@@ -1,13 +1,21 @@
 package lt.sigitas.SpringDemo.Controler;
 
+import lt.sigitas.SpringDemo.Repository.Customer;
+import lt.sigitas.SpringDemo.Service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller// https://localhost:3306//
 @RequestMapping(path = "/customermapping" )
 public class CustomerController {
+
+    @Autowired
+    private CustomerService customerService;
 
     //https://localhost:8080/customermapping/test
     @GetMapping(path = "/test" )
@@ -15,4 +23,10 @@ public class CustomerController {
         return "This is text from Spring";
     }
 
+    ////http://localhost:8080/customermapping/customer/all
+    @GetMapping(path = "/customer/all")
+    public @ResponseBody List<Customer> getAllCustomers(){
+        return customerService.getAllCustomers();
+
+    }
 }
