@@ -3,19 +3,18 @@ package lt.sigitas.SpringDemo.Bootstrap;
 import lt.sigitas.SpringDemo.Repository.CustomerRepository;
 import lt.sigitas.SpringDemo.Repository.ProductLineRepository;
 import org.hibernate.annotations.Comment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
 
+    @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
     private ProductLineRepository productLineRepository;
 
-    public BootStrapData(CustomerRepository customerRepository, ProductLineRepository productLineRepository) {
-        this.customerRepository = customerRepository;
-        this.productLineRepository = productLineRepository;
-    }
 
     @Override
     public void run(String... args) throws Exception {
