@@ -1,10 +1,12 @@
 package lt.sigitas.SpringDemo.Controler;
 
 import lt.sigitas.SpringDemo.Repository.Customer;
+import lt.sigitas.SpringDemo.Repository.CustomerRepository;
 import lt.sigitas.SpringDemo.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,6 +18,8 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     //https://localhost:8080/customermapping/test
     @GetMapping(path = "/test" )
@@ -29,4 +33,9 @@ public class CustomerController {
         return customerService.getAllCustomers();
 
     }
+
+    @GetMapping(path = "/customer/{id}")
+   public @ResponseBody Customer getCustomerById(@PathVariable int id){
+        return customerService.getCustomerById(id);
+   }
 }
