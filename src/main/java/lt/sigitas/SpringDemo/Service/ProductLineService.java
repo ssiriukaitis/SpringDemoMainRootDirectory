@@ -23,4 +23,13 @@ public class ProductLineService {
         return productLineRepository.findById(productLineId).get();
     }
 
+    public ProducLine getMyProductLineById(String productLineid){
+        return productLineRepository.findByProductLine(productLineid).get();
+    }
+
+    public List<ProducLine> getMyTextDescriptionLike(String textDescription){
+        return (List<ProducLine>) productLineRepository.findByTextDescriptionLike(textDescription);
+    }
+
+
 }

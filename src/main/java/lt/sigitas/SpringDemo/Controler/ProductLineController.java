@@ -41,4 +41,16 @@ public class ProductLineController {
     public @ResponseBody ProducLine getProductLineById(@PathVariable String id){
         return productLineService.getProductLineById(id);
     }
+
+//    http://localhost:8080/productLinemapping/myProductLine/Ships
+    @GetMapping(path = "/myProductLine/{id}")
+    public @ResponseBody ProducLine getMYProductLineById(@PathVariable String id){
+        return productLineService.getMyProductLineById(id);
+    }
+    //   http://localhost:8080/productLinemapping/myProductLine/Like/Fas
+    @GetMapping(path = "/myProductLine/Like/{textDescription}")
+    public @ResponseBody List<ProducLine> getMyTextDescriptionLike(@PathVariable String textDescription){
+        return productLineService.getMyTextDescriptionLike("%" + textDescription + "%");
+    }
+
 }
