@@ -18,7 +18,7 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    //https://localhost:8080/customermapping/test
+    //http://localhost:8080/customermapping/test
     @GetMapping(path = "/test" )
     public @ResponseBody String getTestPage() {
         return "This is text from Spring";
