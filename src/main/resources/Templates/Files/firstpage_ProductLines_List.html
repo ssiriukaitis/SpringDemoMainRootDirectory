@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>ProductLines list</title>
+    </head>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+    <body>
+    <table id="productLinesDataTable" class="table">
+        <tr>
+            <th class="th">#</th>
+            <th class="th">ProductLine</th>
+            <th class="th">TextDescription</th>
+            <th class="th">HTMLDescription</th>
+        </tr>
+        <tr th:each="productLines : ${productLinesList}">
+            <td class="td" th:text="${productLinesStat.index+1}"></td>
+            <td class="td" th:text="${productLines.productLine}"></td>
+            <td class="td" th:text="${productLines.textDescription}"></td>
+            <td class="td" th:text="${productLines.htmlDescription}"></td>
+
+        </tr>
+    </table>
+    </body>
+</html>

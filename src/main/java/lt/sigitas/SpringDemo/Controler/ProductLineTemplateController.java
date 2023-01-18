@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller// https://localhost:3306//
 @RequestMapping(path = "/productLinesTemplate" )
 public class ProductLineTemplateController {
@@ -35,5 +37,14 @@ public class ProductLineTemplateController {
         model.addAttribute("htmldescription", productline.getHtmlDescription());
 
         return "/Files/firstPageProductLines";
+    }
+
+    //http://localhost:8080/productLinesTemplate/firstpage_ProductLines_List/productLines/all
+
+    @GetMapping(path = "/firstpage_ProductLines_List/productLines/all" )
+    public String getAllProductlines(Model model) {
+        List<ProducLine> productLinesList = productLineService.getAllProductLines();
+        model.addAttribute("productLinesList", productLinesList);
+        return "/Files/firstpage_ProductLines_list";
     }
 }
