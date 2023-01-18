@@ -66,4 +66,6 @@ public @ResponseBody Customer getMyCustomerByIdWithRequestParam(@RequestParam in
     return customerService.getMyCustomerById(customerNumber);
 }
 
+
+
 }
