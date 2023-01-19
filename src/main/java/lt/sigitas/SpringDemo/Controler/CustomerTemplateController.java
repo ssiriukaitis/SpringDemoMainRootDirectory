@@ -48,6 +48,22 @@ public class CustomerTemplateController {
         model.addAttribute("key_customers_list", customersList);
         return "/Files/firstpage_customers_list";
     }
+    //JQuery set up apačioje
+
+    //http://localhost:8080/customertemplate/customers/jquery
+    @GetMapping(path = "/customers/jquery" )
+    public String getJqueryPage(){
+        return "/Files/jquerypage";
+    }
+    // http://localhost:8080/customertemplate/customers/like/a
+    @GetMapping(path = "/customers/like/{name}")
+    public @ResponseBody List<Customer> getMyCustomerByNameLike(@PathVariable String name){ // test
+        return  customerService.getMyCustomerByNameLike("%" + name + "%"); // %test%
+    }
+
+
+    // CSS styles būdai apačioje
+
 
     //http://localhost:8080/customertemplate/customer/112
     @GetMapping(path = "/customer/{id}" )

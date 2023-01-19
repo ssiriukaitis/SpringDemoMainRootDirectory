@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(
+                function() {
+                    $.getJSON('http://localhost:8080/customertemplate/customers/like/a',
+                         {
+                            ajax : 'false'
+                         },
+
+                         function(data){
+                            drawTable(data);
+                        }
+                    );
+                }
+            );
+
+            function drawTable(data) {
+                        for (var i = 0; i < data.length; i++) {
+                            drawRow(data[i]);
+                        }
+                    }
+
+                    function drawRow(rowData) {
+                        var row = $("<tr />")
+                        $("#customerDataTable").append(row);
+                        row.append($("<td>" + rowData.contactFirstName + "</td>"));
+                        row.append($("<td>" + rowData.contactLastName + "</td>"));
+                        row.append($("<td>" + rowData.phone + "</td>"));
+                        }
+
+    </script>
+</head>
+<body>
+        <table id="customerDataTable">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+            </tr>
+        </table>
+</body>
+</html>
