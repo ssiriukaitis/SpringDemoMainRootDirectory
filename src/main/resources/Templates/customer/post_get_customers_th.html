@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/customertemplate/customers/getandpost}" th:object="${key_customer}" method="post">
+    <label>Company name:</label>
+    <input type="text" th:field="${key_customer.customerName}" id="companyName"/>
+    <input type="submit" value="Submit" />
+    <input type="submit" value="Clear" onclick="document.getElementById('companyName').value = ''"/>
+</form>
+<br>
+
+<table>
+    <tr>
+        <th class="th">#</th>
+        <th class="th">id</th>
+        <th class="th">Company</th>
+        <th class="th">First Name</th>
+        <th class="th">Last Name</th>
+        <th class="th">Phone</th>
+        <th class="th">City</th>
+        <th class="th">Country</th>
+        <th class="th">Credit Limit</th>
+    </tr>
+
+    <tr th:if="${#lists.isEmpty(key_customer_listas)}">
+        <td colspan="5">No Records found. Add some...!</td>
+    </tr>
+
+    <tr th:each="customer : ${key_customer_listas}">
+        <td class="td" th:text="${customerStat.index+1}"></td>
+        <td class="td" th:text="${customer.customerNumber}"></td>
+        <td class="td" th:text="${customer.customerName}"></td>
+        <td class="td" th:text="${customer.contactFirstName}"></td>
+        <td class="td" th:text="${customer.contactLastName}"></td>
+        <td class="td" th:text="${customer.phone}"></td>
+        <td class="td" th:text="${customer.city}"></td>
+        <td class="td" th:text="${customer.country}"></td>
+        <td class="td" th:text="${customer.creditLimit}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
