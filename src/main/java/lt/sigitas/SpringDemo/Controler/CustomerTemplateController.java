@@ -57,6 +57,13 @@ public class CustomerTemplateController {
         model.addAttribute("key_customer", customer);
         return "/customer/customer_th";
     }
+    //http://localhost:8080/customertemplate/customers/all
+    @GetMapping(path = "/customers/all" )
+    public String getAllCustomersWithNewTemplate(Model model) {
+        List<Customer> customersList = customerService.getAllCustomers();
+        model.addAttribute("key_customers_list", customersList);
+        return "/customer/customers_th";
+    }
 
 }
 
